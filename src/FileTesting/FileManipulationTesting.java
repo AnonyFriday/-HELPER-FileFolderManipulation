@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Text-based File and Binary File
+ * 
  * @author duyvu
  */
 public class FileManipulationTesting extends FileDAO {
