@@ -126,7 +126,7 @@ public abstract class FileDAO {
 
     public static void writeArrayDataTextBasedFile(File file, List<? extends Employee> emps) throws FileNotFoundException {
         Writer writer = new PrintWriter(file);
-
+   
         for (Employee emp : emps) {
             ((PrintWriter) writer).println(emp.toString());
         }
