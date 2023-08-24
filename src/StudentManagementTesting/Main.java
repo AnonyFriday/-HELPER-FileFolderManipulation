@@ -25,6 +25,7 @@ public class Main {
         // Create file
         File fileTextToExport = new File("tmp/files/fileTextToExport.txt");
         File fileBinaryToExport = new File("tmp/files/fileBinaryToExport.dat ");
+        File fileTextBufferToRead = new File("tmp/files/fileTextBufferTest.txt");
 
         // Write text-based to file
         // - .txt
@@ -46,5 +47,8 @@ public class Main {
         students2.forEach((student) -> {
             System.out.println(student.toString());
         });
+
+        // Read text file on buffer
+        FileDAO.readStudentsFromFileTextBasedBuffered(fileTextBufferToRead);
     }
 }

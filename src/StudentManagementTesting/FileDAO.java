@@ -4,6 +4,7 @@
  */
 package StudentManagementTesting;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -102,7 +103,7 @@ public abstract class FileDAO {
         return list;
     }
 
-    // Read Studens on the Text File
+    // Read Students on the Text File
     public static LinkedList<Student> readStudentsFromFileTextBased(File file) {
 
         List<Student> list = new LinkedList<Student>();
@@ -129,4 +130,28 @@ public abstract class FileDAO {
         return (LinkedList<Student>) list;
     }
 
+    // Read Students on the Text File using BufferInputStream
+    // - Instead of byte - size reading, we construct a reader for the fix sized of the buffer
+    // - e.g. setting buffer's size = 1024B, means reading per 1024B, instead of 1 byte ordinally 
+    public static LinkedList<Student> readStudentsFromFileTextBasedBuffered(File file) {
+
+        List<Student> list = new LinkedList<Student>();
+        try (FileInputStream fileInputStream = new FileInputStream(file); BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream)) {
+
+            // Preset the fix buffer's size
+            byte[] bufferSize = new byte[1024];
+
+            // Stats on data size
+            int length = bufferedInputStream.read(bufferSize);
+            System.out.println("Length Data: " + length);
+            System.out.println("Size of buffer: " + bufferSize.length);
+            System.out.println("Remaning buffer size Vũ Kim Duy: " + (bufferSize.length - length));
+//            System.out.println(new String(bufferSize));
+
+        } catch (IOException ex) {
+            Logger.getLogger(FileDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return (LinkedList<Student>) list;
+    }
 }
